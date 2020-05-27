@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
 
 @RestController
@@ -34,9 +33,7 @@ public class ParticipantRestController {
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<?> addParticipant(@RequestBody Participant participant) {
         if (participantService.findByLogin(participant.getLogin()) != null) {
-            return new ResponseEntity(
-                    "Unable to create. A participant with login " + participant.getLogin() + " already exist.",
-                    HttpStatus.CONFLICT);
+            return new ResponseEntity("Unable to create. A participant with login " + participant.getLogin() + " already exist.", HttpStatus.CONFLICT);
         }
         participantService.add(participant);
         return new ResponseEntity<Participant>(participant, HttpStatus.CREATED);
@@ -53,8 +50,7 @@ public class ParticipantRestController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> update(@PathVariable("id") String login,
-                                    @RequestBody Participant updatedParticipant) {
+    public ResponseEntity<?> update(@PathVariable("id") String login, @RequestBody Participant updatedParticipant) {
         if (participantService.findByLogin(login) != null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }

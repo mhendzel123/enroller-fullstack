@@ -8,11 +8,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.Collections;
+
+//			db <> server
 
 @Service
 public class ParticipantProvider implements UserDetailsService {
+	
     @Autowired
     private ParticipantService participantService;
 
