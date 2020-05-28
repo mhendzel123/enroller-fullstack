@@ -9,7 +9,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import com.company.enroller.model.Meeting;
 import com.company.enroller.model.Participant;
@@ -96,16 +95,6 @@ public class MeetingService {
 		return selectedMeetings;
 	}
 	
-//    public MeetingService() {
-//        connector = DatabaseConnector.getInstance();
-//    }
-
-//    public Collection<Meeting> getAll() {
-//        String hql = "FROM Meeting";
-//        Query query = connector.getSession().createQuery(hql);
-//        return query.list();
-//    }
-	
 	public Collection<Meeting> searchMeetingsByParticipant(String participantID) {
 		Collection<Meeting> meetings = new ArrayList();
 		for (Meeting meeting : this.getAll()) {
@@ -118,5 +107,4 @@ public class MeetingService {
 		}
 		return meetings;
 	}
-
 }

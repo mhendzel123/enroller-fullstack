@@ -2,7 +2,6 @@ package com.company.enroller.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

@@ -67,7 +67,6 @@ public class MeetingRestController {
 		} else {
 			meetingService.registerMeeting(meeting);
 		}
-//		return new ResponseEntity(HttpStatus.OK);
 		long id = meeting.getId();
 		return new ResponseEntity(id, HttpStatus.OK);
 	}
@@ -97,11 +96,9 @@ public class MeetingRestController {
 
 	@RequestMapping(value = "/{id}/{login}", method = RequestMethod.POST)
 	public ResponseEntity<?> addParticipantToMeeting(@PathVariable("id") long id, @PathVariable("login") String login) {
-		//System.out.println("meeting ID:" + id + " login:" + login);
 		ParticipantService participantService = new ParticipantService();
 		Participant participant = participantService.findByLogin(login);
 		if (participant == null) {
-//			return new ResponseEntity("Add the participant " + login + " to the main participant list first.", HttpStatus.CONFLICT);
 			return new ResponseEntity("Add the participant " + login + " to the list of users first.", HttpStatus.CONFLICT);
 		}
 		Meeting foundMeeting = meetingService.findByID(id);
@@ -139,7 +136,6 @@ public class MeetingRestController {
 
 	@RequestMapping(value = "/{id}/participants", method = RequestMethod.GET)
 	public ResponseEntity<?> getMeetingParticipants(@PathVariable("id") long meetingID) {
-//		   System.out.println("called with id" + meetingID);
 		Collection<Participant> participants = meetingService.getMeetingParticipants(meetingID);
 		if (participants == null) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
