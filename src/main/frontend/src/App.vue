@@ -40,7 +40,6 @@
                 this.clearMessage();
                 this.$http.post('participants', user)
                     .then(() => {
-                        this.success('Konto zostało założone. Możesz się zalogować.');
                         this.registering = false;
                     })
                     .catch(response => this.failure('Błąd przy zakładaniu konta. Kod odpowiedzi: ' + response.status));
@@ -82,7 +81,6 @@
             const token = localStorage.getItem('token');
             if (username && token) {
                 this.storeAuth(username, token);
-                // if token expired or user has been deleted - logout!
                 this.$http.get(`participants/${username}`).catch(() => this.logout());
             }
         },

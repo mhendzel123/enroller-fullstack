@@ -54,7 +54,7 @@ public class ParticipantRestController {
         if (participantService.findByLogin(login) != null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
-        updatedParticipant.setLogin(login); // in case of login!=updatedParticipant.getLogin()
+        updatedParticipant.setLogin(login);
         participantService.update(updatedParticipant);
         return new ResponseEntity<Participant>(HttpStatus.NO_CONTENT);
     }
