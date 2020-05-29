@@ -42,7 +42,7 @@
                     .then(() => {
                         this.registering = false;
                     })
-                    .catch(response => this.failure('Błąd przy zakładaniu konta. Kod odpowiedzi: ' + response.status));
+                    .catch(response => this.failure('Error' + response.status));
             },
             login(user) {
                 this.clearMessage();
@@ -51,7 +51,7 @@
                         const token = response.body.token;
                         this.storeAuth(user.login, token);
                     })
-                    .catch(() => this.failure('Logowanie nieudane.'));
+                    .catch(() => this.failure('Error'));
             },
             storeAuth(username, token) {
                 this.authenticatedUsername = username;
